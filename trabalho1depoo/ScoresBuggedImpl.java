@@ -14,7 +14,7 @@ public class ScoresBuggedImpl implements Scores {
 
     public ScoresBuggedImpl() {
         // inicializar o vetor
-        valor = new GameEntry[2];
+        valor = new GameEntry[10];
         //inicializa a variavel valorM
         valorM = 0;
     }
@@ -40,40 +40,70 @@ public class ScoresBuggedImpl implements Scores {
 
             }
             valor[i] = e;
-           // return true;
+            // return true;
         }
 
-     return true;
+        return true;
     }
 
     @Override
-    public int get(int i) {
-        int valorP = 0;
-        for (int j = 0; j < valor.length; j++) {
-            if (j == i) {
-                valorP = valor[j].getScore();
-            }
+    public GameEntry get(int i) {
+        GameEntry e = null;
+        int max = 10;
+        // int valorP = 0;
+        /**
+         * tratamento de excecção para valores de indice que não estiverem no
+         * intervalo de 0-9.
+         */
+        if (i > 10) {
+            throw new IllegalArgumentException("Valor de indice não esta dentro do intervalo esperado");
         }
-        return valorP;
+
+        int j = 0;
+        for (GameEntry valorP : valor) {
+            if (j == i) {
+                if (valorP == null) {
+                    throw new NullPointerException("Objeto nulo");
+                } else {
+                    return valorP;
+                }
+            }
+
+            j++;
+
+        }
+
+        return e;
 
     }
 
     @Override
     public int getCapacity() {
         return valor.length;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 
     @Override
     public int getNumScores() {
+        GameEntry e = null;
         int cont = 0;
-        for (int i = 0; i < valor.length; i++) {
-            if (valor[i].getScore() != 0) {
+
+        for (GameEntry y : valor) {
+            if (y == null) {
+                throw new NullPointerException("Objeto nulo");
+            }
+            if (e.getScore() != 0) {
                 cont++;
             }
-        }
-        return cont;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
+        }
+
+        /**
+         * for (int i = 0; i < valor.length; i++) { if (valor[i].getScore() ==
+         * 0) { throw new NullPointerException("Objeto nulo"); } else{ cont++; }
+         */
+        return cont;
+    }
+    //return cont;
+    //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 }

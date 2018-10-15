@@ -21,7 +21,7 @@ public interface Scores {
     /**
      * Retorna o score na posição i
      */
-    int get(int i);
+    GameEntry get(int i);
 
     /**
      * Retorna a capacidade de coleção

@@ -25,7 +25,8 @@ public class Trabalho1dePOO {
         int s = in.nextInt();
         GameEntry g1 = new GameEntry(n,s);
         ScoresBuggedImpl g2 = new ScoresBuggedImpl();
-       // System.out.println(g2.add());
+       // System.out.println(g2.get(9));
+        System.out.println(g2.getNumScores());
         
         
         
